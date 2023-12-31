@@ -1,0 +1,50 @@
+.header{
+    padding: 1rem 1.5rem;
+    box-shadow: var(--drop-shadow);
+    display: flex;
+    justify-content: space-between;
+    
+}
+.header-content{
+    display: flex;
+    gap: 1.3rem;
+    align-items: center;
+}
+.edb-logo{
+    height: 4rem;
+    object-fit: contain;
+}
+.nav-item{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.5rem;
+}
+.nav-txt{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.3rem 0.2rem;
+    position: relative;
+}
+.nav-txt::after{
+    position: absolute;
+    bottom: 0;
+    transition-duration: 0.3s;
+    content: '';
+    width: 0%;
+    height: 3px;
+    background-color: var(--acc-light);
+
+}
+.nav-item:hover .nav-txt::after{
+    width: 100%;
+}
+.nav-icon{
+    object-fit: fill;
+}
+.profile-icon{
+    width: 3rem;
+}
