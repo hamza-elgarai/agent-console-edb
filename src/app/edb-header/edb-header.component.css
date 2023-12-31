@@ -1,5 +1,5 @@
 .header{
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.8rem;
     box-shadow: var(--drop-shadow);
     display: flex;
     justify-content: space-between;
@@ -46,5 +46,5 @@
     object-fit: fill;
 }
 .profile-icon{
-    width: 3rem;
+    width: 40px;
 }
