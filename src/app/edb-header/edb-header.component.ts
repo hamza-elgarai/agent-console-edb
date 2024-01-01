@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./edb-header.component.css']
 })
 export class EdbHeaderComponent {
-
+  isMenuOpen=false
+  
 }

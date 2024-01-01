@@ -1,7 +1,15 @@
-<header class="header">
-    <a href="#">
-        <img src="../../assets/edb-logo.svg" class="edb-logo" alt="">
-    </a>
+<header class="header" [ngClass]="{'header-open':isMenuOpen}">
+    <div class="logo-menu">
+        <a href="#">
+            <img src="../../assets/edb-logo.svg" class="edb-logo" alt="">
+        </a>
+        <input [(ngModel)]="isMenuOpen" type="checkbox" id="menu-btn">
+        <label for="menu-btn" class="toggle">
+            <div class="bars" id="bar1"></div>
+            <div class="bars" id="bar2"></div>
+            <div class="bars" id="bar3"></div>
+        </label>
+    </div>
     <nav class="header-content">
         <a href="#" class="nav-item">
             <svg class="nav-icon" width="40" height="40" viewBox="0 0 57 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +33,9 @@
         </a>
         <a href="" class="profile-a">
             <img class="profile-icon" src="../../assets/profile.svg" alt="">
+            <span class="nav-txt profile-s">Profile</span>
         </a>
+        
     </nav>
+    
 </header>
