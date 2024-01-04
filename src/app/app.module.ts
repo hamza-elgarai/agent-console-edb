@@ -7,12 +7,16 @@ import { EdbHeaderComponent } from './edb-header/edb-header.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ClientsPageComponent } from './clients-page/clients-page.component';
+import { ClientDetailComponent } from './client-detail/client-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EdbHeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    ClientsPageComponent,
+    ClientDetailComponent
   ],
   imports: [
     BrowserModule,

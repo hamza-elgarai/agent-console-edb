@@ -1,0 +1,122 @@
+.container{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.actions{
+    display: flex;
+    gap: 1rem;
+}
+.action-btn{
+    border: none;
+    width: 10rem;
+    border-radius: 20px;
+    background-color: var(--acc-light);
+    border: solid var(--acc-light) 3px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.action-btn:hover{
+    background-color: var(--acc-dark);
+    border-color: var(--acc-dark);
+}
+.del-btn{
+    background-color: white;
+    color: var(--acc-light);
+}
+.del-btn:hover{
+    background-color: var(--light-grey);
+}
+.back-btn{
+    width: 3rem;
+    height: 3rem;
+}
+.back-icon{
+    fill: var(--acc-light);
+}
+.back-btn:hover .back-icon{
+    fill: var(--acc-dark);
+}
+.name-title{
+    font-size: 3rem;
+    display: block;
+    font-weight: bold;
+}
+.client-form{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: auto auto;
+    align-self: center;
+    font-size: 1rem ;
+    max-height: 45vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.client-field{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.subtitle{
+    font-size: 1.2rem;
+    padding-bottom: 0.8rem;
+}
+.field-input{
+    width: 80%;
+    padding: 0.3rem 0.5rem;
+    border: solid var(--dark-grey) 1px;
+    border-radius: 15px;
+}
+.field-label{
+    display: block;
+    width: 30rem;
+}
+
+.beneficiaires-container{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ben-row-field{
+    border-radius: 0;
+    border: solid var(--light-grey) 1px;
+}
+.add-ben{
+    border: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--acc-light);
+    font-size: 1.2rem;
+    line-height: 0;
+    font-weight: bold;
+    margin-left: 0.3rem;
+}
+.add-ben:hover{
+    background-color: var(--acc-dark);
+}
+.rem-ben{
+    border: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--light-grey);
+    font-size: 1.2rem;
+    line-height: 0;
+    font-weight: bold;
+    margin-left: 0.3rem;
+}
+.rem-ben:hover{
+    background-color: rgb(228, 126, 126);
+}

@@ -1,0 +1,41 @@
+<div class="container">
+    <h1 class="clients-title">Clients :</h1>
+    <div class="table-container">
+        <div class="table-tools">
+            <div class="search-tool">
+                <input type="text" name="search-input" [(ngModel)]="searchTerm" id="search-input" placeholder="Rechercher un client" class="search-input">
+                <button class="search-btn" (click)="handleSearch()">Rechercher</button>
+            </div>
+        </div>
+        <div class="table-div">
+            <table class="client-datatable">
+                <tr class="table-head">
+                    <th><label class="checkbox-container">
+                        <input  type="checkbox" [(ngModel)]="isSelectAllChecked" (input)="selectAll($event)">
+                    <div class="checkmark"></div>
+                    </label></th>
+                    <th>ID</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>E-mail</th>
+                    <th>Solde</th>
+                </tr>
+                <tr class="table-row" [routerLink]="['/client', client.id]" *ngFor="let client of renderedClients">
+                    <td (click)="handleClickOnRadio($event)">
+                        <label class="checkbox-container">
+                            <input checked="checked" type="checkbox" (input)="handleSelectRow()" [(ngModel)]="client.selected">
+                            <div class="checkmark"></div>
+                        </label>
+                    </td>
+                    <td>{{client.id}}</td>
+                    <td>{{client.fname}}</td>
+                    <td>{{client.lname}}</td>
+                    <td>{{client.email}}</td>
+                    <td>{{client.solde | number: '1.2-2'}} DH</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    
+</div>

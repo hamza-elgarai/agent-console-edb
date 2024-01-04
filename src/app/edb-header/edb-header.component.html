@@ -1,6 +1,6 @@
 <header class="header" [ngClass]="{'header-open':isMenuOpen}">
     <div class="logo-menu">
-        <a href="#">
+        <a href="/">
             <img src="../../assets/edb-logo.svg" class="edb-logo" alt="">
         </a>
         <input [(ngModel)]="isMenuOpen" type="checkbox" id="menu-btn">
@@ -17,7 +17,7 @@
             </svg>
             <span class="nav-txt">Ajouter transaction</span>
         </a>
-        <a href="#" class="nav-item">
+        <a [routerLink]="['/clients']" class="nav-item">
             <svg class="nav-icon" width="40" height="40" viewBox="0 0 57 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 39.8636V37.6364C2 29.0257 8.9803 22.0455 17.5909 22.0455C26.2015 22.0455 33.1818 29.0257 33.1818 37.6364V39.8636" stroke="#6F00C6" stroke-width="3" stroke-linecap="round"/><path d="M28.7273 26.5C28.7273 20.3496 33.7133 15.3636 39.8637 15.3636C46.014 15.3636 51 20.3496 51 26.5V27.6136" stroke="#6F00C6" stroke-width="3" stroke-linecap="round"/><path d="M17.5909 22.0455C22.5112 22.0455 26.5 18.0566 26.5 13.1364C26.5 8.21601 22.5112 4.22728 17.5909 4.22728C12.6706 4.22728 8.68182 8.21601 8.68182 13.1364C8.68182 18.0566 12.6706 22.0455 17.5909 22.0455Z" stroke="#6F00C6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M39.8636 15.3636C43.554 15.3636 46.5455 12.3721 46.5455 8.68182C46.5455 4.99156 43.554 2 39.8636 2C36.1733 2 33.1818 4.99156 33.1818 8.68182C33.1818 12.3721 36.1733 15.3636 39.8636 15.3636Z" stroke="#6F00C6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
