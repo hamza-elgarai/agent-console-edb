@@ -40,4 +40,58 @@ export class ClientsPageComponent {
     
   }
 
+  labels:any = {
+    id:"Identifiant",
+    title:"Nom",
+    prenom:"Prénom",
+    typePieceIdentite:"Type de pièce d'identité",
+    paysEmissionPieceIdentite:"Pays d'émission de pièce d'identité",
+    numeroPieceIdentite:"Numéro de pièce d'identité",
+    expirationPieceIdentite:"Date d'expiration de la pièce d'identité",
+    dateNaissance:"Date de naissance",
+    profession:"Profession",
+    paysNationalite:"Pays de nationalité",
+    paysAdresse:"Addresse Pays",
+    adresseLegale:"Adresse legale",
+    ville:"Ville",
+    gsm:"Tél",
+    email:"E-mail",
+    agent:"Agent",
+    beneficiaires:"Bénéficiaires"
+  }
+  client:any = {
+    id:null,
+    title:"",
+    prenom:"",
+    typePieceIdentite:"",
+    paysEmissionPieceIdentite:"",
+    numeroPieceIdentite:"",
+    expirationPieceIdentite: "",
+    dateNaissance: "",
+    profession:"",
+    paysNationalite:"",
+    paysAdresse:"",
+    adresseLegale:"",
+    ville:"",
+    gsm:"",
+    email:"",
+    agent:null,
+    beneficiaires:[
+    ]
+ }
+getObjectKeys(obj: any): string[] {
+  return Object.keys(obj);
+}
+
+modalClass="modal-bg"
+openModal(event:Event){
+  this.modalClass = "modal-bg modal-opened"
+}
+closeModal(event:Event){
+  this.modalClass = "modal-bg"
+}
+stopPropagation(event:Event){
+  event.stopPropagation()
+}
+
 }

@@ -2,6 +2,7 @@
     <h1 class="clients-title">Clients :</h1>
     <div class="table-container">
         <div class="table-tools">
+            <button (click)="openModal($event)"  class="add-btn">Ajouter</button>
             <div class="search-tool">
                 <input type="text" name="search-input" [(ngModel)]="searchTerm" id="search-input" placeholder="Rechercher un client" class="search-input">
                 <button class="search-btn" (click)="handleSearch()">Rechercher</button>
@@ -34,8 +35,55 @@
                     <td>{{client.solde | number: '1.2-2'}} DH</td>
                 </tr>
             </table>
+            
 
         </div>
     </div>
-    
+    <!--Modal for creating client-->
+    <div class="{{modalClass}}" (click)="closeModal($event)">
+        <div class="modal-container" (click)="stopPropagation($event)">
+            <h1 class="subtitle">Ajouter un client :</h1>
+            <div class="grid-container">
+                <div class="client-form">
+                    <div class="client-field" *ngFor="let key of getObjectKeys(labels)">
+                        <label class="field-label" for="{{ key }}">{{ labels[key] }}</label>
+                    
+                        <ng-container [ngSwitch]="key">
+                          <input class="field-input"
+                            *ngSwitchCase="'id'"
+                            type="text"
+                            id="{{ key }}"
+                            [(ngModel)]="client[key]"
+                            disabled
+                          />
+                    
+                          <input class="field-input"
+                            *ngSwitchCase="'expirationPieceIdentite'"
+                            type="date"
+                            id="{{ key }}"
+                            [(ngModel)]="client[key]"
+                          />
+                    
+                          <input class="field-input"
+                            *ngSwitchCase="'dateNaissance'"
+                            type="date"
+                            id="{{ key }}"
+                            [(ngModel)]="client[key]"
+                          />
+                    
+                          <!-- Add more ngSwitchCase statements for other types -->
+                    
+                          <input class="field-input"
+                            *ngSwitchDefault
+                            type="text"
+                            id="{{ key }}"
+                            [(ngModel)]="client[key]"
+                          />
+                        </ng-container>
+                      </div>
+                      <button class="add-btn save-btn">Valider</button>
+                </div>
+        </div>
+    </div>
+
 </div>

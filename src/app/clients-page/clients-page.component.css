@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 4rem;
+    padding-top: 2rem;
 }
 .clients-title{
     font-size: 2rem;
@@ -17,7 +17,7 @@
 }
 .table-tools{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 0.2rem;
     padding: 0.6rem;
 }
@@ -46,6 +46,18 @@
     -moz-box-shadow: -4px 5px 20px -10px rgba(0,0,0,0.50);
     max-height: 60vh;
     overflow: auto;
+}
+.add-btn{
+  width: 6rem;
+  z-index: 3;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 1.2rem;
+  background-color: var(--acc-light);
+  border: none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
 }
 .client-datatable{
     font-size: 0.8rem;
@@ -138,3 +150,61 @@
     border-width: 0 0.06em 0.06em 0;
     transform: rotate(45deg);
   }
+
+.grid-container{
+  display: grid;
+  grid-template-columns: auto;
+}
+.client-form{
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: auto auto;
+  font-size: 1rem ;
+}
+.client-field{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.subtitle{
+  font-size: 1.2rem;
+  padding-bottom: 0.8rem;
+}
+.modal-bg{
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.56);
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+}
+.modal-opened{
+  display: flex;
+}
+.modal-container{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  border-radius: 30px;
+}
+.field-input{
+  width: 80%;
+  padding: 0.3rem 0.5rem;
+  border: solid var(--dark-grey) 1px;
+  border-radius: 15px;
+}
+.field-label{
+  display: block;
+  width: 20rem;
+}
+.save-btn{
+  margin-top: 1rem;
+  width: 80%;
+}
