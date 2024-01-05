@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ClientsPageComponent } from './clients-page/clients-page.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
+import { TransactionTypePageComponent } from './transaction-type-page/transaction-type-page.component';
+import { AccountDebitSubmissionComponent } from './account-debit-submission/account-debit-submission.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
     EdbHeaderComponent,
     HomePageComponent,
     ClientsPageComponent,
-    ClientDetailComponent
+    ClientDetailComponent,
+    TransactionTypePageComponent,
+    AccountDebitSubmissionComponent
   ],
   imports: [
     BrowserModule,
