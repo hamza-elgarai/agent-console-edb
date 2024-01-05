@@ -3,10 +3,15 @@
     display: flex;
     flex-direction: column;
 }
+.grid-container{
+    display: grid;
+    grid-template-columns: auto;
+}
 header{
     padding-bottom: 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
 }
 .actions{
@@ -16,6 +21,7 @@ header{
 .action-btn{
     border: none;
     width: 10rem;
+    height: 3rem;
     border-radius: 20px;
     background-color: var(--acc-light);
     border: solid var(--acc-light) 3px;
@@ -46,7 +52,7 @@ header{
     fill: var(--acc-dark);
 }
 .name-title{
-    font-size: 3rem;
+    font-size: 2rem;
     display: block;
     font-weight: bold;
 }
@@ -54,11 +60,7 @@ header{
     display: grid;
     gap: 0.5rem;
     grid-template-columns: auto auto;
-    align-self: center;
     font-size: 1rem ;
-    max-height: 45vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 .client-field{
     display: flex;
@@ -77,10 +79,11 @@ header{
 }
 .field-label{
     display: block;
-    width: 30rem;
+    width: 20rem;
 }
 
 .beneficiaires-container{
+    padding-top: 2rem;
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -89,6 +92,9 @@ header{
 .ben-row-field{
     border-radius: 0;
     border: solid var(--light-grey) 1px;
+}
+.ben-table{
+    align-self: center;
 }
 .add-ben{
     border: none;

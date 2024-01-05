@@ -4,72 +4,73 @@
             <path d="M11.739,13.962c-0.087,0.086-0.199,0.131-0.312,0.131c-0.112,0-0.226-0.045-0.312-0.131l-3.738-3.736c-0.173-0.173-0.173-0.454,0-0.626l3.559-3.562c0.173-0.175,0.454-0.173,0.626,0c0.173,0.172,0.173,0.451,0,0.624l-3.248,3.25l3.425,3.426C11.911,13.511,11.911,13.789,11.739,13.962 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.148,3.374,7.521,7.521,7.521C14.147,17.521,17.521,14.148,17.521,10"></path>
         </svg></a>
        
-        <h1 class="name-title">{{client.prenom}} {{client.title}}</h1>
+        <h1 class="name-title">Détails du client : {{client.prenom}} {{client.title}}</h1>
         <div class="actions">
             <button class="action-btn del-btn">Supprimer</button>
             <button class="action-btn save-btn">Sauvegarder</button>
 
         </div>
     </header>
-    <h3 class="subtitle">Informations personnelles :</h3>
-    <hr>
-    <div class="client-form">
-        <div class="client-field" *ngFor="let key of getObjectKeys(labels)">
-            <label class="field-label" for="{{ key }}">{{ labels[key] }}</label>
-        
-            <ng-container [ngSwitch]="key">
-              <input class="field-input"
-                *ngSwitchCase="'id'"
-                type="text"
-                id="{{ key }}"
-                [(ngModel)]="client[key]"
-                disabled
-              />
-        
-              <input class="field-input"
-                *ngSwitchCase="'expirationPieceIdentite'"
-                type="date"
-                id="{{ key }}"
-                [(ngModel)]="client[key]"
-              />
-        
-              <input class="field-input"
-                *ngSwitchCase="'dateNaissance'"
-                type="date"
-                id="{{ key }}"
-                [(ngModel)]="client[key]"
-              />
-        
-              <!-- Add more ngSwitchCase statements for other types -->
-        
-              <input class="field-input"
-                *ngSwitchDefault
-                type="text"
-                id="{{ key }}"
-                [(ngModel)]="client[key]"
-              />
-            </ng-container>
+    <div class="grid-container">
+      <div class="client-form">
+        <h3 class="subtitle">Informations personnelles :</h3>
+          <div class="client-field" *ngFor="let key of getObjectKeys(labels)">
+              <label class="field-label" for="{{ key }}">{{ labels[key] }}</label>
+          
+              <ng-container [ngSwitch]="key">
+                <input class="field-input"
+                  *ngSwitchCase="'id'"
+                  type="text"
+                  id="{{ key }}"
+                  [(ngModel)]="client[key]"
+                  disabled
+                />
+          
+                <input class="field-input"
+                  *ngSwitchCase="'expirationPieceIdentite'"
+                  type="date"
+                  id="{{ key }}"
+                  [(ngModel)]="client[key]"
+                />
+          
+                <input class="field-input"
+                  *ngSwitchCase="'dateNaissance'"
+                  type="date"
+                  id="{{ key }}"
+                  [(ngModel)]="client[key]"
+                />
+          
+                <!-- Add more ngSwitchCase statements for other types -->
+          
+                <input class="field-input"
+                  *ngSwitchDefault
+                  type="text"
+                  id="{{ key }}"
+                  [(ngModel)]="client[key]"
+                />
+              </ng-container>
+            </div>
+      </div>
+      <div class="beneficiaires-container">
+        <h3 class="subtitle">Bénéficiaires :</h3>
+        <div class="ben-table">
+          <div class="ben-row" *ngFor="let ben of client.beneficiaires">
+            <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.fname">
+            <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.lname">
+            <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.email">
+            <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.tel">
+            <button class="rem-ben" (click)="remBen(ben)">-</button>
           </div>
-    </div>
-    <hr>
-    <h3 class="subtitle">Bénéficiaires :</h3>
-    <div class="beneficiaires-container">
-      <div class="ben-row" *ngFor="let ben of client.beneficiaires">
-        <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.fname">
-        <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.lname">
-        <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.email">
-        <input type="text" name="" id="" class="ben-row-field" [(ngModel)]="ben.tel">
-        <button class="rem-ben" (click)="remBen(ben)">-</button>
-      </div>
-      <div class="ben-row" >
-        <input type="text" name="" id="" class="ben-row-field" placeholder="Prénom" [(ngModel)]="newBen.fname">
-        <input type="text" name="" id="" class="ben-row-field" placeholder="Nom" [(ngModel)]="newBen.lname">
-        <input type="text" name="" id="" class="ben-row-field" placeholder="Téléphone" [(ngModel)]="newBen.email">
-        <input type="text" name="" id="" class="ben-row-field" placeholder="E-mail" [(ngModel)]="newBen.tel">
-        <button class="add-ben" (click)="addBen()">+</button>
+          <div class="ben-row" >
+            <input type="text" name="" id="" class="ben-row-field" placeholder="Prénom" [(ngModel)]="newBen.fname">
+            <input type="text" name="" id="" class="ben-row-field" placeholder="Nom" [(ngModel)]="newBen.lname">
+            <input type="text" name="" id="" class="ben-row-field" placeholder="Téléphone" [(ngModel)]="newBen.email">
+            <input type="text" name="" id="" class="ben-row-field" placeholder="E-mail" [(ngModel)]="newBen.tel">
+            <button class="add-ben" (click)="addBen()">+</button>
+          </div>
+        </div>
       </div>
     </div>
-      <hr>
     
 
 </div>
