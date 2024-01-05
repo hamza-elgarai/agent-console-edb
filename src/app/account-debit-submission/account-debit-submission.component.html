@@ -1,0 +1,530 @@
+<div class="m-4 sm:m-9 h-[70vh]">
+  <div class="flex flex-col items-start gap-5 mb-10">
+    <p class="font-bold text-2xl sm:text-4xl">
+      Emission d'un transfert par débit de compte :
+    </p>
+    <p class="font-medium text-xl sm:text-3xl">Spécifiez le donneur :</p>
+  </div>
+
+  <div class="flex flex-col items-center justify-around w-full">
+    <!-- search form -->
+    <form class="flex items-center w-[70vw]">
+      <label for="simple-search" class="sr-only">Search</label>
+
+      <!-- Drop Down -->
+
+      <button
+        id="dropdown-button-2"
+        data-dropdown-toggle="dropdown-search-city"
+        class="flex-shrink-0 z-10 inline-flex items-center py-4 px-4 me-4 text-sm font-medium text-center text-gray-500 bg-gray-50 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none"
+        type="button"
+      >
+        CIN
+        <svg
+          class="w-2.5 h-2.5 ms-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <div
+        id="dropdown-search-city"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdown-button-2"
+        >
+          <li>
+            <button
+              type="button"
+              class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              role="menuitem"
+            >
+              <div class="inline-flex items-center">
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5 rounded-full me-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="flag-icon-css-us"
+                  viewBox="0 0 512 512"
+                >
+                  <g fill-rule="evenodd">
+                    <g stroke-width="1pt">
+                      <path
+                        fill="#bd3d44"
+                        d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
+                        transform="scale(3.9385)"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
+                        transform="scale(3.9385)"
+                      />
+                    </g>
+                    <path
+                      fill="#192f5d"
+                      d="M0 0h98.8v70H0z"
+                      transform="scale(3.9385)"
+                    />
+                    <path
+                      fill="#fff"
+                      d="M8.2 3l1 2.8H12L9.7 7.5l.9 2.7-2.4-1.7L6 10.2l.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7L74 8.5l-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 7.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 24.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 21.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 38.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 35.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 52.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 49.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 66.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 63.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9z"
+                      transform="scale(3.9385)"
+                    />
+                  </g>
+                </svg>
+                United States
+              </div>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              role="menuitem"
+            >
+              <div class="inline-flex items-center">
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5 rounded-full me-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="flag-icon-css-de"
+                  viewBox="0 0 512 512"
+                >
+                  <path fill="#ffce00" d="M0 341.3h512V512H0z" />
+                  <path d="M0 0h512v170.7H0z" />
+                  <path fill="#d00" d="M0 170.7h512v170.6H0z" />
+                </svg>
+                Germany
+              </div>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              role="menuitem"
+            >
+              <div class="inline-flex items-center">
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5 rounded-full me-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="flag-icon-css-it"
+                  viewBox="0 0 512 512"
+                >
+                  <g fill-rule="evenodd" stroke-width="1pt">
+                    <path fill="#fff" d="M0 0h512v512H0z" />
+                    <path fill="#009246" d="M0 0h170.7v512H0z" />
+                    <path fill="#ce2b37" d="M341.3 0H512v512H341.3z" />
+                  </g>
+                </svg>
+                Italy
+              </div>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              role="menuitem"
+            >
+              <div class="inline-flex items-center">
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5 rounded-full me-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  id="flag-icon-css-cn"
+                  viewBox="0 0 512 512"
+                >
+                  <defs>
+                    <path
+                      id="a"
+                      fill="#ffde00"
+                      d="M1-.3L-.7.8 0-1 .6.8-1-.3z"
+                    />
+                  </defs>
+                  <path fill="#de2910" d="M0 0h512v512H0z" />
+                  <use
+                    width="30"
+                    height="20"
+                    transform="matrix(76.8 0 0 76.8 128 128)"
+                    xlink:href="#a"
+                  />
+                  <use
+                    width="30"
+                    height="20"
+                    transform="rotate(-121 142.6 -47) scale(25.5827)"
+                    xlink:href="#a"
+                  />
+                  <use
+                    width="30"
+                    height="20"
+                    transform="rotate(-98.1 198 -82) scale(25.6)"
+                    xlink:href="#a"
+                  />
+                  <use
+                    width="30"
+                    height="20"
+                    transform="rotate(-74 272.4 -114) scale(25.6137)"
+                    xlink:href="#a"
+                  />
+                  <use
+                    width="30"
+                    height="20"
+                    transform="matrix(16 -19.968 19.968 16 256 230.4)"
+                    xlink:href="#a"
+                  />
+                </svg>
+                China
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <!-- Input -->
+      <div class="w-full">
+        <input
+          type="text"
+          id="simple-search"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:border-[#9E33F1] focus:outline-none block w-full ps-10 p-4"
+          placeholder="Search branch name..."
+          required
+        />
+      </div>
+
+      <!-- Button -->
+      <button
+        (click)="toggleCard()"
+        type="submit"
+        class="p-4 ms-2 text-sm font-medium text-white bg-[#9E33F1] rounded-full border border-[#9E33F1] hover:bg-[#9E33F1]"
+      >
+        <svg
+          class="w-4 h-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
+        </svg>
+        <span class="sr-only">Search</span>
+      </button>
+    </form>
+
+    <!-- Card -->
+
+    <div
+      class="mt-8 w-[70vw] h-[50vh] border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white sm:rounded-lg p-4 flex flex-col justify-around leading-normal shadow-xl transform transition-transform duration-300"
+      [ngClass]="{
+        'scale-100': showCard,
+        'scale-75': !showCard,
+        invisible: !showCard
+      }"
+    >
+      <p class="text-xl ml-3 font-semibold">Client trouvé</p>
+
+      <div class="flex items-center justify-evenly">
+        <div class="flex flex-col space-y-2">
+          <p class="font-semibold">
+            Nom : <span class="font-normal">M . Hamza Elgarai</span>
+          </p>
+          <p class="font-semibold">
+            Type didentité : <span class="font-normal">CIN</span>
+          </p>
+          <p class="font-semibold">
+            Pays d'émission : <span class="font-normal">Maroc</span>
+          </p>
+          <p class="font-semibold">
+            N° Pièce d'identité : <span class="font-normal">EE930320</span>
+          </p>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <p class="font-semibold">
+            Validité pièce d'identité :
+            <span class="font-normal">12/01/2027</span>
+          </p>
+          <p class="font-semibold">
+            Date de naissance : <span class="font-normal">24/10/2001</span>
+          </p>
+          <p class="font-semibold">
+            Nationalité : <span class="font-normal">Marocain</span>
+          </p>
+          <p class="font-semibold">
+            Profession : <span class="font-normal">Etudiant</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center text-white">
+        <button
+          class="bg-[#9E33F1] p-4 px-7 rounded-full"
+          (click)="toggleModal()"
+        >
+          Continuer
+        </button>
+      </div>
+    </div>
+
+    <div
+      *ngIf="showModal"
+      class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+    >
+      <div class="relative my-6 mx-auto w-[60vw] overflow-y-auto h-[70vh]">
+        <!--content-->
+        <div
+          class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+        >
+          <!--header-->
+          <div class="flex justify-end p-3">
+            <button (click)="toggleModal()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-9 h-9"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <!--body-->
+          <div class="relative p-3 flex-col w-full">
+            <!-- Montant -->
+            <div class="flex flex-col space-y-4">
+              <p class="text-xl font-semibold ms-2">
+                Emission de transfert de la part de Hamza Elgarai:
+              </p>
+              <div class="flex items-center justify-center">
+                <div
+                  class="flex flex-col items-center justify-center space-y-5"
+                >
+                  <div class="flex items-center justify-between space-x-5">
+                    <p class="font-medium text-lg">Montant à envoyer :</p>
+                    <div class="">
+                      <input
+                        type="number"
+                        id="simple-search"
+                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-full focus:border-[#9E33F1] focus:outline-none block ps-10 pe-10 pt-3 pb-3"
+                        placeholder="Montant"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <p class="text-lg font-medium">
+                    Solde disponible : 20 000 DH
+                  </p>
+                </div>
+              </div>
+            </div>
+            <hr class="h-px my-6 mx-4 bg-gray-200 border-0" />
+            <!-- Part 2 : Fees Calculation -->
+            <div class="flex flex-col space-y-4">
+              <p class="text-xl font-semibold ms-2">Frais :</p>
+
+              <div class="flex items-center justify-center">
+                <div class="radio-buttons-container">
+                  <div class="radio-button">
+                    <input
+                      name="radio-group"
+                      id="radio2"
+                      class="radio-button__input"
+                      type="radio"
+                    />
+                    <label for="radio2" class="radio-button__label">
+                      <span class="radio-button__custom"></span>
+
+                      Frais Ia charge du client de donneur d'ordre
+                    </label>
+                  </div>
+                  <div class="radio-button">
+                    <input
+                      name="radio-group"
+                      id="radio1"
+                      class="radio-button__input"
+                      type="radio"
+                    />
+                    <label for="radio1" class="radio-button__label">
+                      <span class="radio-button__custom"></span>
+
+                      Frais a la charge du client bénéficiaire
+                    </label>
+                  </div>
+                  <div class="radio-button">
+                    <input
+                      name="radio-group"
+                      id="radio3"
+                      class="radio-button__input"
+                      type="radio"
+                    />
+                    <label for="radio3" class="radio-button__label">
+                      <span class="radio-button__custom"></span>
+
+                      Frais partagés entre les clients (Donneur d'ordre et
+                      bénéficiaire)
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="h-px my-6 mx-4 bg-gray-200 border-0" />
+            <!-- Part 3: Choose Benificary -->
+            <div class="flex flex-col space-y-4">
+              <p class="text-xl font-semibold ms-2">Bénéficiaire :</p>
+              <div class="flex items-center justify-center">
+                <div class="radio-buttons-container2">
+                  <!-- ! Choose Existing Benificary -->
+                  <div class="radio-button">
+                    <input
+                      name="radio-group2"
+                      id="radioChooseExistingBenificiary"
+                      class="radio-button__input2"
+                      type="radio"
+                      [(ngModel)]="benificiaryExists"
+                      value="yes"
+                      (change)="toggleVisibilityOfTextFields()"
+                      checked
+                    />
+                    <label
+                      for="radioChooseExistingBenificiary"
+                      class="radio-button__label"
+                    >
+                      <span class="radio-button__custom"></span>
+
+                      Sélectionner un bénéficiaire existant :
+                    </label>
+                  </div>
+
+                  <div class="paste-button mx-auto">
+                    <button
+                      class="button disabled:opacity-30"
+                      [disabled]="disableDropDownChooseBenificiary"
+                      (click)="toggleDropdown()"
+                    >
+                      Choisir un bénéficiaire &nbsp; ▼
+                    </button>
+                    <div
+                      class="dropdown-content"
+                      [ngClass]="{ active: isDropdownOpen }"
+                    >
+                      <a id="top" href="#">bénéficiaire 1</a>
+                      <a id="middle" href="#">bénéficiaire 2</a>
+                      <a id="bottom" href="#">bénéficiaire 3</a>
+                    </div>
+                  </div>
+
+                  <!-- ! Create New Benificary -->
+                  <div class="radio-button">
+                    <input
+                      name="radio-group2"
+                      id="radioCreateNewBenificiary"
+                      class="radio-button__input2"
+                      type="radio"
+                      [(ngModel)]="benificiaryExists"
+                      value="no"
+                      (change)="toggleVisibilityOfTextFields()"
+                    />
+                    <label
+                      for="radioCreateNewBenificiary"
+                      class="radio-button__label"
+                    >
+                      <span class="radio-button__custom"></span>
+
+                      Ajouter un nouveau bénéficiaire :
+                    </label>
+                  </div>
+                  <div
+                    class="mx-auto flex flex-col justify-center items-center space-y-3"
+                  >
+                    <div class="flex items-center justify-evenly gap-3">
+                      <input
+                        type="text"
+                        placeholder="Nom"
+                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 focus-within:shadow-lg disabled:opacity-35"
+                        [disabled]="disableTextFields"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Prenom"
+                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 transition-colors ease duration-300 focus-within:shadow-lg disabled:opacity-35"
+                        [disabled]="disableTextFields"
+                      />
+                      <input
+                        type="phone"
+                        placeholder="Phone Number"
+                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 transition-colors ease duration-300 focus-within:shadow-lg disabled:opacity-35"
+                        [disabled]="disableTextFields"
+                      />
+                      <button
+                        class="bg-[#9E33F1] disabled:opacity-35 disabled:bg-opacity-35 p-3 rounded-lg text-white"
+                        [disabled]="disableTextFields"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="h-px my-6 mx-4 bg-gray-200 border-0" />
+            <!-- Part 4 -->
+            <div class="flex flex-col">
+              <p class="text-xl font-semibold ms-2">Vérification par SMS :</p>
+              <div class="w-[75%] ms-5 mt-2">
+                <p class="text-md font-light">
+                  Pour confirmer la transaction, cliquez sur "Envoyer" pour
+                  recevoir un SMS contenant un code de vérification. Entrez le
+                  code puis confirmez.
+                </p>
+              </div>
+
+              <div class="flex items-center justify-center mt-4">
+                <input
+                  type="number"
+                  id="simple-search"
+                  class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-s-lg focus:border-[#9E33F1] focus:outline-none block ps-3 pe-3 pt-3 pb-3 w-64"
+                  placeholder="Code de vérification"
+                  required
+                />
+
+                <button class="bg-[#9E33F1] p-4 px-3 rounded-e-lg text-white">
+                  Envoyer
+                </button>
+              </div>
+
+              <div class="mx-auto mt-6">
+                <button class="bg-[#9E33F1] p-4 px-7 rounded-full text-white">
+                  Confirmer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+  </div>
+</div>
