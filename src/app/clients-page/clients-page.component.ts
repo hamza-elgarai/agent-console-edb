@@ -41,7 +41,6 @@ export class ClientsPageComponent {
   }
 
   labels:any = {
-    id:"Identifiant",
     title:"Nom",
     prenom:"Prénom",
     typePieceIdentite:"Type de pièce d'identité",
@@ -55,9 +54,7 @@ export class ClientsPageComponent {
     adresseLegale:"Adresse legale",
     ville:"Ville",
     gsm:"Tél",
-    email:"E-mail",
-    agent:"Agent",
-    beneficiaires:"Bénéficiaires"
+    email:"E-mail"
   }
   client:any = {
     id:null,
@@ -74,13 +71,13 @@ export class ClientsPageComponent {
     adresseLegale:"",
     ville:"",
     gsm:"",
-    email:"",
-    agent:null,
-    beneficiaires:[
-    ]
+    email:""
  }
 getObjectKeys(obj: any): string[] {
   return Object.keys(obj);
+}
+get isTableEmpty(){
+  return !(this.renderedClients && this.renderedClients.length >0)
 }
 
 modalClass="modal-bg"

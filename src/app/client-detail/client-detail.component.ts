@@ -23,8 +23,6 @@ export class ClientDetailComponent {
     ville:"Ville",
     gsm:"Tél",
     email:"E-mail",
-    agent:"Agent",
-    beneficiaires:"Bénéficiaires"
   }
   client:any = {
     id:1,
@@ -49,7 +47,7 @@ export class ClientDetailComponent {
       {fname:"Ahmed",lname:"Iraoui",email:"irahmed@gmail.com",tel:"0698752035"},
     ]
  }
- getObjectKeys(obj: any): string[] {
+getObjectKeys(obj: any): string[] {
   return Object.keys(obj);
 }
 updateObject(key: string, value: any): void {

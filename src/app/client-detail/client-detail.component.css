@@ -1,11 +1,12 @@
-.container{
+.client-detail-container{
     padding: 2rem;
     display: flex;
     flex-direction: column;
 }
-.grid-container{
-    display: grid;
-    grid-template-columns: auto;
+.client-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 header{
     padding-bottom: 2rem;
@@ -58,9 +59,10 @@ header{
 }
 .client-form{
     display: grid;
-    gap: 0.5rem;
+    column-gap: 2rem;
     grid-template-columns: auto auto;
     font-size: 1rem ;
+    width: 75%;
 }
 .client-field{
     display: flex;
@@ -70,9 +72,10 @@ header{
 .subtitle{
     font-size: 1.2rem;
     padding-bottom: 0.8rem;
+    width: 100%;
 }
 .field-input{
-    width: 80%;
+    width: 100%;
     padding: 0.3rem 0.5rem;
     border: solid var(--dark-grey) 1px;
     border-radius: 15px;

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="clients-page-container">
     <h1 class="clients-title">Clients :</h1>
     <div class="table-container">
         <div class="table-tools">
@@ -8,7 +8,8 @@
                 <button class="search-btn" (click)="handleSearch()">Rechercher</button>
             </div>
         </div>
-        <div class="table-div">
+        <h1 class="empty-msg" *ngIf="isTableEmpty">No clients available</h1>
+        <div *ngIf="!isTableEmpty" class="table-div">
             <table class="client-datatable">
                 <tr class="table-head">
                     <th><label class="checkbox-container">
@@ -81,8 +82,8 @@
                           />
                         </ng-container>
                       </div>
-                      <button class="add-btn save-btn">Valider</button>
-                </div>
+                    </div>
+                    <button class="add-btn save-btn">Valider</button>
         </div>
     </div>
 
