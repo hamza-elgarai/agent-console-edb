@@ -6,8 +6,8 @@
        
         <h1 class="name-title">Détails du client : {{client.prenom}} {{client.title}}</h1>
         <div class="actions">
-            <button class="action-btn del-btn">Supprimer</button>
-            <button class="action-btn save-btn">Sauvegarder</button>
+            <button class="action-btn del-btn" (click)="deleteClient()">Supprimer</button>
+            <button class="action-btn save-btn" (click)="updateClient()">Sauvegarder</button>
 
         </div>
     </header>
@@ -30,7 +30,7 @@
                   *ngSwitchCase="'expirationPieceIdentite'"
                   type="date"
                   id="{{ key }}"
-                  [(ngModel)]="client[key]"
+                  [(ngModel)]="client[key] "
                 />
           
                 <input class="field-input"
@@ -38,6 +38,7 @@
                   type="date"
                   id="{{ key }}"
                   [(ngModel)]="client[key]"
+                  value="client[key] | date:'yyyy-MM-dd'"
                 />
           
                 <!-- Add more ngSwitchCase statements for other types -->

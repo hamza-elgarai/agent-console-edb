@@ -15,6 +15,7 @@ import { AccountDebitSubmissionComponent } from './account-debit-submission/acco
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guard/auth.guard';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthGuard } from './guard/auth.guard';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    AuthGuard
+    AuthGuard,
+    DatePipe
 
   ],
   bootstrap: [AppComponent]
