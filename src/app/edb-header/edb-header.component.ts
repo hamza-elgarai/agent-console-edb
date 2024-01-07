@@ -12,10 +12,10 @@ export class EdbHeaderComponent {
   isMenuOpen=false
   showDropdown=false
   
-  
 
   constructor(private router:Router,private authService: AuthenticationService,private tokenService: TokenStorageService){}
-  
+  isAuthenticated=this.authService.isAuthenticated()
+
   logout(){
     this.authService.logout();
     // clear local storage

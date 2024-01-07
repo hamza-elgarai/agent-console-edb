@@ -16,4 +16,8 @@ export class ClientService {
     return this.http.get(this.apiUrl + '/api/agents/clients');
   }
   
+  getClientByCIN( cin:String):Observable<any> {
+    return this.http.get(this.apiUrl + '/api/client/get-client/'+cin);
+
+  }
 }

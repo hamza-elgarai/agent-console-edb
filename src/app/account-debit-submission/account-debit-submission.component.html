@@ -198,6 +198,8 @@
         <input
           type="text"
           id="simple-search"
+          name="cin"
+          [(ngModel)]="cin"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:border-[#9E33F1] focus:outline-none block w-full ps-10 p-4"
           placeholder="Search branch name..."
           required
@@ -244,7 +246,7 @@
       <div class="flex items-center justify-evenly">
         <div class="flex flex-col space-y-2">
           <p class="font-semibold">
-            Nom : <span class="font-normal">M . Hamza Elgarai</span>
+            Nom : <span class="font-normal">{{client.prenom}} {{client.title}}</span>
           </p>
           <p class="font-semibold">
             Type didentité : <span class="font-normal">CIN</span>
@@ -253,22 +255,22 @@
             Pays d'émission : <span class="font-normal">Maroc</span>
           </p>
           <p class="font-semibold">
-            N° Pièce d'identité : <span class="font-normal">EE930320</span>
+            N° Pièce d'identité : <span class="font-normal">{{client.numeroPieceIdentite}}</span>
           </p>
         </div>
         <div class="flex flex-col space-y-2">
           <p class="font-semibold">
             Validité pièce d'identité :
-            <span class="font-normal">12/01/2027</span>
+            <span class="font-normal">{{client.expirationPieceIdentite }}</span>
           </p>
           <p class="font-semibold">
-            Date de naissance : <span class="font-normal">24/10/2001</span>
+            Date de naissance : <span class="font-normal">{{client.expirationPieceIdentite}}</span>
           </p>
           <p class="font-semibold">
-            Nationalité : <span class="font-normal">Marocain</span>
+            Nationalité : <span class="font-normal">{{client.paysNationalite}}</span>
           </p>
           <p class="font-semibold">
-            Profession : <span class="font-normal">Etudiant</span>
+            Profession : <span class="font-normal">{{client.profession}}</span>
           </p>
         </div>
       </div>
@@ -316,7 +318,7 @@
             <!-- Montant -->
             <div class="flex flex-col space-y-4">
               <p class="text-xl font-semibold ms-2">
-                Emission de transfert de la part de Hamza Elgarai:
+                Emission de transfert de la part de {{client.prenom}} {{client.title}}:
               </p>
               <div class="flex items-center justify-center">
                 <div
