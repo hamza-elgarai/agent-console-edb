@@ -12,6 +12,7 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { TransactionTypePageComponent } from './transaction-type-page/transaction-type-page.component';
 import { AccountDebitSubmissionComponent } from './account-debit-submission/account-debit-submission.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AccountDebitSubmissionComponent } from './account-debit-submission/acco
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

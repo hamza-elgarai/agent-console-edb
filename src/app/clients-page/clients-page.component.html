@@ -30,8 +30,8 @@
                         </label>
                     </td>
                     <td>{{client.id}}</td>
-                    <td>{{client.fname}}</td>
-                    <td>{{client.lname}}</td>
+                    <td>{{client.prenom}}</td>
+                    <td>{{client.title}}</td>
                     <td>{{client.email}}</td>
                     <td>{{client.solde | number: '1.2-2'}} DH</td>
                 </tr>
@@ -83,7 +83,7 @@
                         </ng-container>
                       </div>
                     </div>
-                    <button class="add-btn save-btn">Valider</button>
+                    <button class="add-btn save-btn" (click)="handleCreateClient()">Valider</button>
         </div>
     </div>
 

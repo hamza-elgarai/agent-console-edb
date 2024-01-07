@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import clientData from "../clients"
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-clients-page',
@@ -8,9 +9,19 @@ import clientData from "../clients"
 })
 export class ClientsPageComponent {
 
-  clients:any[] = clientData
+  clients:any[] = []
   renderedClients = this.clients
+  url = "http://localhost:8083"
+  constructor(private http:HttpClient){
+    this.http.get(this.url+"/USER-SERVICE/api/agents/clients").subscribe((data:any)=>{
+      console.log(data);
+      this.clients = data.map((client:any)=>{let c2:any = {...client};c2.selected = false;return c2})
+      this.renderedClients = this.clients
+    })
+  }
   searchTerm=""
+
+
   
   selectedClients:any[] = []
   isSelectAllChecked = false;
@@ -89,6 +100,12 @@ closeModal(event:Event){
 }
 stopPropagation(event:Event){
   event.stopPropagation()
+}
+handleCreateClient(){
+  console.log(this.client);
+  this.http.post(this.url+"/USER-SERVICE/api/agents/client",this.client).subscribe((response)=>{
+    console.log(response);
+  })
 }
 
 }
