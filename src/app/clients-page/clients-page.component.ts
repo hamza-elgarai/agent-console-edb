@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import clientData from "../clients"
+import { ClientService } from '../services/client/client.service';
 
 @Component({
   selector: 'app-clients-page',
@@ -7,7 +8,13 @@ import clientData from "../clients"
   styleUrls: ['./clients-page.component.css']
 })
 export class ClientsPageComponent {
+  constructor(private clientService:ClientService){
 
+  }
+    ngOnInit(){
+      this.getClients();
+
+    }
   clients:any[] = clientData
   renderedClients = this.clients
   searchTerm=""
@@ -91,4 +98,14 @@ stopPropagation(event:Event){
   event.stopPropagation()
 }
 
+      getClients() {
+        this.clientService.getClients().subscribe({
+          next: (data: any) => {
+            console.log('clients are ', data);
+          },
+          error: (error) => {
+            console.log('error ', error.message);
+          }
+        });
+      }
 }

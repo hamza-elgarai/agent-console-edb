@@ -1,14 +1,15 @@
 /* ! CSS for radio buttons */
+
 .radio-buttons-container {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   gap: 12px;
 }
 .radio-buttons-container2 {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   gap: 12px;
 }
 

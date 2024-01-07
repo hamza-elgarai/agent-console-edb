@@ -8,18 +8,22 @@
         <h1 class="login-header">Connexion</h1>
         <div class="field">
             <label for="username">Nom d'utilisateur : </label>
-            <input type="text" name="username" id="username" class="username-input">
+            <input type="text" name="username" id="username"
+             [(ngModel)]="username" class="username-input">
         </div>
         <div class="field">
             <label for="password">Mot de passe : </label>
-            <input type="{{(pwShown)?'text':'password'}}" name="password" id="password" class="password-input">
+            <input type="{{(pwShown)?'text':'password'}}" name="password" 
+            [(ngModel)]="password"
+            id="password" class="password-input">
             
             <label for="show-password">
                 <input [(ngModel)]="pwShown"  type="checkbox" name="show-password" id="show-password">
                 Afficher le mot de passe
             </label>
         </div>
-        <button class="login-btn">Valider</button>
+        <button class="login-btn"
+        (click)="login()">Valider</button>
 
     </div>
 </div>
