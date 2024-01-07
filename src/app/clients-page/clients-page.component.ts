@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import clientData from "../clients"
+import { HttpClient } from '@angular/common/http';
+import { subscribe } from 'diagnostics_channel';
 import { ClientService } from '../services/client/client.service';
 
 @Component({
@@ -8,21 +10,28 @@ import { ClientService } from '../services/client/client.service';
   styleUrls: ['./clients-page.component.css']
 })
 export class ClientsPageComponent {
-  constructor(private clientService:ClientService){
-
+  constructor(private clientService:ClientService){}
+  clients:any[] = []
+  renderedClients:any[] = this.clients
+  ngOnInit(){
+    this.clientService.getClients().subscribe((data:any)=>{
+      console.log(data);
+      this.clients = data.map((client:any)=>{let c2:any = {...client};c2.selected = false;return c2})
+      this.renderedClients = this.clients
+    });
   }
-    ngOnInit(){
-      this.getClients();
 
-    }
-  clients:any[] = clientData
-  renderedClients = this.clients
+
+  
+
   searchTerm=""
+
+
   
   selectedClients:any[] = []
   isSelectAllChecked = false;
   handleSearch(){
-    this.clients = this.clients.map(c=>{c.selected=false;return c})
+    this.clients = this.clients.map((c:any)=>{c.selected=false;return c})
     this.renderedClients = this.clients.filter((c)=>{
       let valuesString = JSON.stringify(Object.values(c))
       return (valuesString.toLowerCase().includes(this.searchTerm.toLowerCase()))
@@ -97,15 +106,12 @@ closeModal(event:Event){
 stopPropagation(event:Event){
   event.stopPropagation()
 }
+handleCreateClient(){
+  console.log(this.client);
+  this.clientService.addClient(this.client).subscribe((response:any)=>{
+    console.log(response);
+  })
+}
 
-      getClients() {
-        this.clientService.getClients().subscribe({
-          next: (data: any) => {
-            console.log('clients are ', data);
-          },
-          error: (error) => {
-            console.log('error ', error.message);
-          }
-        });
-      }
+
 }

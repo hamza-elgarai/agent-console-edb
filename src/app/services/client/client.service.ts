@@ -15,6 +15,9 @@ export class ClientService {
   getClients():Observable<any> {
     return this.http.get(this.apiUrl + '/api/agents/clients');
   }
+  addClient(client:any):Observable<any>{
+    return this.http.post(this.apiUrl+"/USER-SERVICE/api/agents/client",client)
+  }
   
   getClientByCIN( cin:String):Observable<any> {
     return this.http.get(this.apiUrl + '/api/client/get-client/'+cin);
