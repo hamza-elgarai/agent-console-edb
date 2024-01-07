@@ -31,10 +31,27 @@
             </svg>
             <span class="nav-txt">Transactions</span>
         </a>
-        <a [routerLink]="['/login']" class="profile-a">
+        <!-- <a [routerLink]="['/login']" class="profile-a">
             <img class="profile-icon" src="../../assets/profile.svg" alt="">
             <span class="nav-txt profile-s">Profile</span>
-        </a>
+        </a> -->
+        <div class="profile-dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+            <a class="profile-a" (click)="toggleDropdown()">
+              <img class="profile-icon" src="../../assets/profile.svg" alt="">
+              <span class="nav-txt profile-s">Profile</span>
+            </a>
+          
+            <div *ngIf="showDropdown" id="dropdownHover" class="z-10 absolute  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+              <ul class="py-2 text-sm text-gray-700 ">
+                <li>
+                  <a  (click)="logout()" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+
+          
         
     </nav>
     
