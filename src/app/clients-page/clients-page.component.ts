@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import clientData from "../clients"
 import { HttpClient } from '@angular/common/http';
+import { subscribe } from 'diagnostics_channel';
+import { ClientService } from '../services/client/client.service';
 
 @Component({
   selector: 'app-clients-page',
@@ -8,17 +10,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./clients-page.component.css']
 })
 export class ClientsPageComponent {
-
+  constructor(private clientService:ClientService){}
   clients:any[] = []
-  renderedClients = this.clients
-  url = "http://localhost:8083"
-  constructor(private http:HttpClient){
-    this.http.get(this.url+"/USER-SERVICE/api/agents/clients").subscribe((data:any)=>{
+  renderedClients:any[] = this.clients
+  ngOnInit(){
+    this.clientService.getClients().subscribe((data:any)=>{
       console.log(data);
       this.clients = data.map((client:any)=>{let c2:any = {...client};c2.selected = false;return c2})
       this.renderedClients = this.clients
-    })
+    });
   }
+
+
+  
+
   searchTerm=""
 
 
@@ -26,7 +31,7 @@ export class ClientsPageComponent {
   selectedClients:any[] = []
   isSelectAllChecked = false;
   handleSearch(){
-    this.clients = this.clients.map(c=>{c.selected=false;return c})
+    this.clients = this.clients.map((c:any)=>{c.selected=false;return c})
     this.renderedClients = this.clients.filter((c)=>{
       let valuesString = JSON.stringify(Object.values(c))
       return (valuesString.toLowerCase().includes(this.searchTerm.toLowerCase()))
@@ -103,9 +108,10 @@ stopPropagation(event:Event){
 }
 handleCreateClient(){
   console.log(this.client);
-  this.http.post(this.url+"/USER-SERVICE/api/agents/client",this.client).subscribe((response)=>{
+  this.clientService.addClient(this.client).subscribe((response:any)=>{
     console.log(response);
   })
 }
+
 
 }
