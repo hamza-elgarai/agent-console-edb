@@ -158,9 +158,9 @@
     .profile-s{
         display: flex;
     }
-}
-.header-open{
-    height: 23rem;
+    .header-open{
+        height: 23rem;
+    }
 }
 a{
     cursor: pointer;

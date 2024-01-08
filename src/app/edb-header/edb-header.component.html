@@ -1,6 +1,6 @@
 <header class="header" [ngClass]="{'header-open':isMenuOpen}">
     <div class="logo-menu">
-        <a href="/">
+        <a [routerLink]="['/']">
             <img src="../../assets/edb-logo.svg" class="edb-logo" alt="">
         </a>
         <input [(ngModel)]="isMenuOpen" type="checkbox" id="menu-btn">
@@ -11,7 +11,7 @@
         </label>
     </div>
     <nav class="header-content">
-        <a href="#" class="nav-item">
+        <a [routerLink]="['/TransactionsType']" class="nav-item">
             <svg class="nav-icon" width="40" height="40" viewBox="0 0 57 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M34.1 2H53.895C54.7815 2 55.5 2.71858 55.5 3.605V37.845C55.5 38.7315 54.7815 39.45 53.895 39.45H34.1M34.1 2V39.45M34.1 2H23.4M34.1 39.45H23.4M23.4 2H3.605C2.71858 2 2 2.71858 2 3.605V37.845C2 38.7315 2.71858 39.45 3.605 39.45H23.4M23.4 2V39.45" stroke="#6F00C6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.375 14.9701C15.375 13.8624 14.2697 13.1019 13.3704 13.7485C11.3444 15.2052 10.025 17.5829 10.025 20.2686C10.025 22.9543 11.3444 25.3321 13.3704 26.7887C14.2697 27.4352 15.375 26.675 15.375 25.5673C15.375 22.2128 15.375 19.0579 15.375 14.9701Z" fill="#6F00C6"/><path d="M42.1249 14.9701C42.1249 13.8624 43.2302 13.1019 44.1296 13.7485C46.1556 15.2052 47.4749 17.5829 47.4749 20.2686C47.4749 22.9543 46.1556 25.3321 44.1296 26.7887C43.2302 27.4352 42.1249 26.675 42.1249 25.5673C42.1249 22.2128 42.1249 19.0579 42.1249 14.9701Z" fill="#6F00C6"/>
             </svg>

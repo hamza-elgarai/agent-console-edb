@@ -5,6 +5,7 @@ import { AuthenticationService } from '../services/auth/authentication.service';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 const TOKEN_HEADER_KEY = 'Authorization';  // for Spring Boot back-end
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginPageComponent {
   pwShown=false;  
   username:string ='';
   password:string='';
-  constructor(public router:Router,private authService: AuthenticationService, private tokenService: TokenStorageService) {
+  constructor(public router:Router,private authService: AuthenticationService, private tokenService: TokenStorageService,private toastr:ToastrService) {
     if(this.tokenService.getToken()){
       this.router.navigateByUrl('/clients')
     }
@@ -37,7 +38,7 @@ export class LoginPageComponent {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         console.log ('i am logged in ')
-
+        this.toastr.success("Vous êtes connectés")
         this.router.navigateByUrl('/clients')
 
       },
