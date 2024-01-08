@@ -18,6 +18,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { DatePipe } from '@angular/common';
 import { TransactionMgmtComponent } from './transaction-mgmt/transaction-mgmt.component';
 import { ToastNoAnimationModule } from 'ngx-toastr';
+import { CashSubmissionComponent } from './cash-submission/cash-submission.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     LoginPageComponent,
     TransactionTypePageComponent,
     AccountDebitSubmissionComponent,
-    TransactionMgmtComponent
+    CashSubmissionComponent,
+    TransactionMgmtComponent,
   ],
   imports: [
     BrowserModule,

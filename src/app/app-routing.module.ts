@@ -10,6 +10,7 @@ import { AccountDebitSubmissionComponent } from './account-debit-submission/acco
 import { AuthGuard } from './guard/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { TransactionMgmtComponent } from './transaction-mgmt/transaction-mgmt.component';
+import { CashSubmissionComponent } from './cash-submission/cash-submission.component';
 
 const routes: Routes = [
   
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'Account-Debit-Submissions',
     component: AccountDebitSubmissionComponent,canActivate: [AuthGuard]
+  },
+  {
+    path: 'cash-submission',
+    component: CashSubmissionComponent,canActivate: [AuthGuard]
   },
   { path: 'clients', component: ClientsPageComponent ,canActivate: [AuthGuard]},
   { path: 'client/:id', component: ClientDetailComponent ,canActivate: [AuthGuard]},
