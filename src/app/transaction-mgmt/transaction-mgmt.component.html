@@ -1,9 +1,9 @@
 <div class="m-4 sm:m-9 h-[70vh]">
   <div class="flex flex-col items-start gap-5 mb-10">
     <p class="font-bold text-2xl sm:text-4xl">
-      Emission d'un transfert par débit de compte :
+      Gestionnaire des transactions :
     </p>
-    <p class="font-medium text-xl sm:text-3xl">Spécifiez le donneur :</p>
+    <p class="font-medium text-xl sm:text-3xl">Veuillez entrer la réference de la transaction</p>
   </div>
 
   <div class="flex flex-col items-center justify-around w-full">
@@ -19,7 +19,7 @@
         class="flex-shrink-0 z-10 inline-flex items-center py-4 px-4 me-4 text-sm font-medium text-center text-gray-500 bg-gray-50 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none"
         type="button"
       >
-        CIN
+        Réf
         <svg
           class="w-2.5 h-2.5 ms-2.5"
           aria-hidden="true"
@@ -198,17 +198,17 @@
         <input
           type="text"
           id="simple-search"
-          name="cin"
-          [(ngModel)]="cin"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:border-[#9E33F1] focus:outline-none block w-full ps-10 p-4"
-          placeholder="Search branch name..."
+          placeholder="Réference de transaction"
           required
+          name="transRef"
+          [(ngModel)]="transRef"
         />
       </div>
 
       <!-- Button -->
       <button
-        (click)="handleSearchClient()"
+        (click)="toggleCard()"
         type="submit"
         class="p-4 ms-2 text-sm font-medium text-white bg-[#9E33F1] rounded-full border border-[#9E33F1] hover:bg-[#9E33F1]"
       >
@@ -241,46 +241,58 @@
         invisible: !showCard
       }"
     >
-      <p class="text-xl ml-3 font-semibold">Client trouvé</p>
+      <p class="text-xl ml-3 font-semibold">Transaction trouvée :</p>
 
-      <div *ngIf="ClientData && ClientData.id" class="flex items-center justify-evenly">
+      <div *ngIf="transaction.transaction" class="flex items-center justify-evenly">
         <div class="flex flex-col space-y-2">
           <p class="font-semibold">
-            Nom : <span class="font-normal">{{ClientData.title}} {{ClientData.prenom}}</span>
+            Référence : <span class="font-normal">{{transaction.transactionId}}</span>
           </p>
           <p class="font-semibold">
-            Type didentité : <span class="font-normal">{{ClientData.typePieceIdentite}}</span>
+            Nom de donneur : <span class="font-normal">{{transaction.transaction.clientResponse.prenom}} {{transaction.transaction.clientResponse.title}}</span>
           </p>
           <p class="font-semibold">
-            Pays d'émission : <span class="font-normal">{{ClientData.paysEmissionPieceIdentite}}</span>
+            ID du donneur : <span class="font-normal">{{transaction.transaction.clientResponse.id}}</span>
           </p>
           <p class="font-semibold">
-            N° Pièce d'identité : <span class="font-normal">{{ClientData.numeroPieceIdentite}}</span>
+            Statut : <span class="font-normal">{{transactionStatus[transaction.transaction.status]}}</span>
           </p>
         </div>
         <div class="flex flex-col space-y-2">
           <p class="font-semibold">
-            Validité pièce d'identité :
-            <span class="font-normal">{{ClientData.expirationPieceIdentite | date}}</span>
+            Nom du bénéficiaire :
+            <span class="font-normal">{{transaction.transaction.beneficiaryResponse.prenom}} {{transaction.transaction.beneficiaryResponse.nom}}</span>
           </p>
           <p class="font-semibold">
-            Date de naissance : <span class="font-normal">{{ClientData.dateNaissance | date}}</span>
+            Montant : <span class="font-normal">{{transaction.transaction.amount | number:'1.2-2'}} DH</span>
           </p>
           <p class="font-semibold">
-            Nationalité : <span class="font-normal">{{ClientData.paysNationalite}}</span>
+            Frais du transfert : <span class="font-normal">{{transaction.transaction.fraisTransfert | number:'1.2-2'}} DH</span>
           </p>
           <p class="font-semibold">
-            Profession : <span class="font-normal">{{ClientData.profession}}</span>
+            Date de transfert : <span class="font-normal">{{transaction.transaction.issueDate | date}}</span>
           </p>
         </div>
       </div>
 
-      <div class="flex items-center justify-center text-white">
+      <div *ngIf="(transaction.transaction && transaction.transaction.status==='TO_BE_SERVED')" class="flex items-center justify-center gap-1 text-white">
         <button
           class="bg-[#9E33F1] p-4 px-7 rounded-full"
-          (click)="toggleModal()"
+          (click)="toggleModal('servir')"
         >
-          Continuer
+          Servir
+        </button>
+        <button
+          class="bg-[#9E33F1] p-4 px-7 rounded-full"
+          (click)="toggleModal('extourner')"
+        >
+          Extourner
+        </button>
+        <button
+          class="bg-[#9E33F1] p-4 px-7 rounded-full"
+          (click)="toggleModal('restituer')"
+        >
+          Restituer
         </button>
       </div>
     </div>
@@ -292,269 +304,68 @@
       <div class="relative my-6 mx-auto w-[60vw] overflow-y-auto h-[70vh]">
         <!--content-->
         <div
-          class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+          class="border-0 rounded-lg shadow-lg relative flex flex-col p-4 w-full bg-white outline-none focus:outline-none"
         >
-          <!--header-->
-          <div class="flex justify-end p-3">
-            <button (click)="toggleModal()">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-9 h-9"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-          <!--body-->
-          <div class="relative p-3 flex-col w-full">
-            <!-- Montant -->
-            <div class="flex flex-col space-y-4">
-              <p class="text-xl font-semibold ms-2">
-                Emission de transfert de la part de {{ ClientData.nom }} {{ ClientData.prenom }}:
-              </p>
-              <div class="flex items-center justify-center">
-                <div
-                  class="flex flex-col items-center justify-center space-y-5"
-                >
-                  <div class="flex items-center justify-between space-x-5">
-                    <p class="font-medium text-lg">Montant à envoyer :</p>
-                    <div class="">
-                      <input
-                        type="number"
-                        id="simple-search"
-                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-full focus:border-[#9E33F1] focus:outline-none block ps-10 pe-10 pt-3 pb-3"
-                        placeholder="Montant"
-                        [(ngModel)]="montant"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <p class="text-lg font-medium">
-                    Solde disponible : {{ ClientData.solde | number:'1.2-2'}} DH
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr class="h-px my-6 mx-4 bg-gray-200 border-0" />
-            <!-- Part 2 : Fees Calculation -->
-            <div class="flex flex-col space-y-4">
-              <p class="text-xl font-semibold ms-2">Frais :</p>
-
-              <div class="flex items-center justify-center">
-                <div class="radio-buttons-container">
-                  <div class="radio-button">
-                    <input
-                      name="radio-group"
-                      id="radio2"
-                      class="radio-button__input"
-                      type="radio"
-                      value="donor"
-                      (change)="changeWhoPayFees($event)"
-                    />
-                    <label for="radio2" class="radio-button__label">
-                      <span class="radio-button__custom"></span>
-
-                      Frais Ia charge du client de donneur d'ordre
-                    </label>
-                  </div>
-                  <div class="radio-button">
-                    <input
-                      name="radio-group"
-                      id="radio1"
-                      class="radio-button__input"
-                      type="radio"
-                      value="beneficiary"
-                      (change)="changeWhoPayFees($event)"
-
-                    />
-                    <label for="radio1" class="radio-button__label">
-                      <span class="radio-button__custom"></span>
-
-                      Frais a la charge du client bénéficiaire
-                    </label>
-                  </div>
-                  <div class="radio-button">
-                    <input
-                      name="radio-group"
-                      id="radio3"
-                      class="radio-button__input"
-                      type="radio"
-                      value="shared"
-                      (change)="changeWhoPayFees($event)"
-                    />
-                    <label for="radio3" class="radio-button__label">
-                      <span class="radio-button__custom"></span>
-
-                      Frais partagés entre les clients (Donneur d'ordre et
-                      bénéficiaire)
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="h-px my-6 mx-4 bg-gray-200 border-0" />
-            <!-- Part 3: Choose Benificary -->
-            <div class="flex flex-col space-y-4">
-              <p class="text-xl font-semibold ms-2">Bénéficiaire :</p>
-              <div class="flex items-center justify-center">
-                <div class="radio-buttons-container2">
-                  <!-- ! Choose Existing Benificary -->
-                  <div class="radio-button">
-                    <input
-                      name="radio-group2"
-                      id="radioChooseExistingBenificiary"
-                      class="radio-button__input2"
-                      type="radio"
-                      [(ngModel)]="benificiaryExists"
-                      value="yes"
-                      (change)="toggleVisibilityOfTextFields()"
-                      checked
-                    />
-                    <label
-                      for="radioChooseExistingBenificiary"
-                      class="radio-button__label"
-                    >
-                      <span class="radio-button__custom"></span>
-
-                      Sélectionner un bénéficiaire existant :
-                    </label>
-                  </div>
-
-                  <div class="paste-button mx-auto">
-                    <button
-                      class="button disabled:opacity-30"
-                      [disabled]="disableDropDownChooseBenificiary"
-                      (click)="toggleDropdown()"
-                    >
-                    {{ benefName ? benefName : "Selectionner bénéficiaire" }} &nbsp; ▼
-                    </button>
-                    <div
-                      class="dropdown-content"
-                      [ngClass]="{ active: isDropdownOpen }"
-                    >
-                    <a
-                      *ngFor="
-                        let benificiary of Beneficiaries;
-                        let first = first;
-                        let last = last
-                      "
-                      [id]="first ? 'top' : last ? 'bottom' : 'middle'"
-                      (click)="selectBenificiary(benificiary)"
-                    >
-                      {{ benificiary.nom + " " + benificiary.prenom }}
-                    </a>
-                    </div>
-                  </div>
-
-                  <!-- ! Create New Benificary -->
-                  <div class="radio-button">
-                    <input
-                      name="radio-group2"
-                      id="radioCreateNewBenificiary"
-                      class="radio-button__input2"
-                      type="radio"
-                      [(ngModel)]="benificiaryExists"
-                      value="no"
-                      (change)="toggleVisibilityOfTextFields()"
-                    />
-                    <label
-                      for="radioCreateNewBenificiary"
-                      class="radio-button__label"
-                    >
-                      <span class="radio-button__custom"></span>
-
-                      Ajouter un nouveau bénéficiaire :
-                    </label>
-                  </div>
-                  <div
-                    class="mx-auto flex flex-col justify-center items-center space-y-3"
-                  >
-                    <div class="flex flex-col items-center justify-evenly gap-3">
-                      <input
-                        type="text"
-                        placeholder="Nom"
-                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 focus-within:shadow-lg disabled:opacity-35"
-                        [disabled]="disableTextFields"
-                        [(ngModel)]="newBenificiary.nom"
-                      />
-                      <input
-                        type="text"
-                        placeholder="Prenom"
-                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 transition-colors ease duration-300 focus-within:shadow-lg disabled:opacity-35"
-                        [disabled]="disableTextFields"
-                        [(ngModel)]="newBenificiary.prenom"
-                      />
-                      <input
-                        type="phone"
-                        placeholder="Phone Number"
-                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 transition-colors ease duration-300 focus-within:shadow-lg disabled:opacity-35"
-                        [disabled]="disableTextFields"
-                        [(ngModel)]="newBenificiary.phone"
-                      />
-                      <input
-                        type="email"
-                        placeholder="E-mail"
-                        class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-lg focus:border-[#9E33F1] focus:outline-none block ps-2 pe-10 pt-3 pb-3 transition-colors ease duration-300 focus-within:shadow-lg disabled:opacity-35"
-                        [disabled]="disableTextFields"
-                        [(ngModel)]="newBenificiary.email"
-                      />
-                      <button
-                        class="bg-[#9E33F1] disabled:opacity-35 disabled:bg-opacity-35 p-3 rounded-lg text-white"
-                        [disabled]="disableTextFields"
-                        (click)="addNewBenificiary()"
-                      >
-                        Add
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="h-px my-6 mx-4 bg-gray-200 border-0" />
-            <!-- Part 4 -->
+        <div class="flex justify-end p-3">
+          <button (click)="closeModal()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-9 h-9"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
             <div class="flex flex-col">
               <p class="text-xl font-semibold ms-2">Vérification par SMS :</p>
               <div class="w-[75%] ms-5 mt-2">
-                <p class="text-md font-light">
+                <p *ngIf="action && action!=='extourner'" class="text-md font-light">
                   Pour confirmer la transaction, cliquez sur "Envoyer" pour
                   recevoir un SMS contenant un code de vérification. Entrez le
                   code puis confirmez.
                 </p>
+                <p *ngIf="action && action==='extourner'" class="text-md font-light">
+                  Pour confirmer la transaction, veuillez entrer le motif de l'extourne puis confirmez
+                </p>
               </div>
-
-              <div class="flex items-center justify-center mt-4">
+              
+              <input *ngIf="action && action === 'extourner'"
+                type="text"
+                id="simple-search"
+                class="bg-[#fff] m-auto mt-3 border border-[#b9b8b8] text-[#494949] text-sm rounded-s focus:border-[#9E33F1] focus:outline-none block ps-3 pe-3 pt-3 pb-3 w-64"
+                placeholder="Motif d'extourne"
+                [(ngModel)]="motive"
+                required
+              />
+              <div *ngIf="action && action !== 'extourner'" class="flex flex-column items-center justify-center mt-4">
                 <input
+                  
                   type="number"
                   id="simple-search"
                   class="bg-[#fff] border border-[#b9b8b8] text-[#494949] text-sm rounded-s-lg focus:border-[#9E33F1] focus:outline-none block ps-3 pe-3 pt-3 pb-3 w-64"
                   placeholder="Code de vérification"
+                  [(ngModel)]="otpCode"
                   required
-                  [(ngModel)]="typedOTP"
                 />
 
-                <button class="bg-[#9E33F1] p-4 px-3 rounded-e-lg text-white"
-                (click)="sendOTPToClient()"
-                >
+                <button (click)="sendOtp()" class="bg-[#9E33F1] p-4 px-3 rounded-e-lg text-white">
                   Envoyer
                 </button>
               </div>
 
               <div class="mx-auto mt-6">
-                <button class="bg-[#9E33F1] p-4 px-7 rounded-full text-white"
-                (click)="confirmTransaction()"
-                >
+                <button (click)="confirmOperation()" class="bg-[#9E33F1] p-4 px-7 rounded-full text-white">
                   Confirmer
                 </button>
               </div>
-            </div>
           </div>
         </div>
       </div>
