@@ -15,6 +15,8 @@ import { AccountDebitSubmissionComponent } from './account-debit-submission/acco
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guard/auth.guard';
+import { TransactionMgmtComponent } from './transaction-mgmt/transaction-mgmt.component';
+import { ToastNoAnimationModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AuthGuard } from './guard/auth.guard';
     ClientDetailComponent,
     LoginPageComponent,
     TransactionTypePageComponent,
-    AccountDebitSubmissionComponent
+    AccountDebitSubmissionComponent,
+    TransactionMgmtComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { AuthGuard } from './guard/auth.guard';
     RouterModule,
     HttpClientModule,
     FormsModule,
+    ToastNoAnimationModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

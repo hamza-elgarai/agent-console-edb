@@ -3,6 +3,7 @@ import clientData from "../clients"
 import { HttpClient } from '@angular/common/http';
 import { subscribe } from 'diagnostics_channel';
 import { ClientService } from '../services/client/client.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-clients-page',
@@ -10,7 +11,7 @@ import { ClientService } from '../services/client/client.service';
   styleUrls: ['./clients-page.component.css']
 })
 export class ClientsPageComponent {
-  constructor(private clientService:ClientService){}
+  constructor(private clientService:ClientService,private toastr:ToastrService){}
   clients:any[] = []
   renderedClients:any[] = this.clients
   ngOnInit(){
@@ -87,7 +88,8 @@ export class ClientsPageComponent {
     adresseLegale:"",
     ville:"",
     gsm:"",
-    email:""
+    email:"",
+    solde: 200.0
  }
 getObjectKeys(obj: any): string[] {
   return Object.keys(obj);
@@ -109,7 +111,30 @@ stopPropagation(event:Event){
 handleCreateClient(){
   console.log(this.client);
   this.clientService.addClient(this.client).subscribe((response:any)=>{
-    console.log(response);
+    console.log(response)
+    if(response.message ==="Client saved or updated successfully"){
+      this.toastr.success("Client créé")
+      this.clients.push(this.client)
+      this.client = {
+        id:null,
+        title:"",
+        prenom:"",
+        typePieceIdentite:"",
+        paysEmissionPieceIdentite:"",
+        numeroPieceIdentite:"",
+        expirationPieceIdentite: "",
+        dateNaissance: "",
+        profession:"",
+        paysNationalite:"",
+        paysAdresse:"",
+        adresseLegale:"",
+        ville:"",
+        gsm:"",
+        email:"",
+        solde: 200.0
+     }
+     this.modalClass = "modal-bg"
+    }
   })
 }
 

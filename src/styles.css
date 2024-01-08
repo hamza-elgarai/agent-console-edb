@@ -141,6 +141,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+ 
+@import 'ngx-toastr/toastr';
 body {
   background-color: var(--bg-grey);
 }
