@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ClientService } from '../services/client/client.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-transaction-mgmt',
@@ -206,4 +207,57 @@ export class TransactionMgmtComponent {
     }
     
   }
+
+
+  generatePDF() {
+    const doc = new jsPDF();
+
+    // Add your image
+    doc.addImage('https://res.cloudinary.com/dhlbxtl5w/image/upload/v1704745101/tylzdsn5lkpn2d1n78ow.png', 5, 5, 40, 20);
+
+    // Set font and text style
+    
+    doc.setFont('Sans-serif', 'bold');
+    // Set font and text style with a red background
+    doc.setFillColor(0, 0, 0);
+    doc.rect(5, 30, 200, 7, 'F');
+    doc.setFillColor(250, 0, 0);
+    doc.rect(5, 37, 200, 3, 'F');
+    // Title
+    doc.setFontSize(22);
+    doc.text('Reçu de Paiement', 70,60);
+
+    doc.setFont('Sans-serif', 'bold');
+    doc.setFontSize(12);
+    doc.text(`Nom du donneur :  ${this.transaction.transaction.clientResponse.prenom} ${this.transaction.transaction.clientResponse.title}` ,15,80);
+
+    doc.setFont('Sans-serif', 'bold');
+    doc.setFontSize(12);
+    doc.text(`Statut :  ${this.transactionStatus[this.transaction.transaction.status]}` ,15,90);
+
+    doc.setFont('Sans-serif','bold');
+    doc.setFontSize(12);
+    doc.text(`Nom du bénéficiaire:  ${this.transaction.transaction.beneficiaryResponse.prenom} ${this.transaction.transaction.beneficiaryResponse.nom}` ,15,100);
+
+    doc.setFont('Sans-serif', 'bold');
+    doc.setFontSize(12);
+    doc.text(`Montant : ${this.transaction.transaction.amount} DH` ,120,90);
+
+    doc.setFont('Sans-serif', 'bold');
+    doc.setFontSize(12);
+    doc.text(`Frais du transfert : ${this.transaction.transaction.fraisTransfert.toFixed(2)} DH` ,120,100);
+    doc.setFont('Sans-serif', 'bold');
+    doc.setFont('Sans-serif', 'bold');
+    doc.setFontSize(12);
+    doc.text(`Référence  :  ${this.transaction.transactionId}` ,120,80);
+
+    doc.setFont('Time', 'normal');
+    doc.setFontSize(10);
+    doc.setFillColor(250, 0, 0);
+    doc.rect(5, 145, 200, 2, 'F');
+    doc.text(`le site internet www.edb.co.ma est édité par EDB Transfer National ,Société Anonyme à Conseil d'administration;RC:N 203 Casablanca` ,7,152);
+    doc.text(` Siège social : 187 ,Avenue Hassan II 20.010 Casablanca Maroc .` ,7,158);
+    doc.save('transaction-receipt.pdf');
+  }
+
 }
