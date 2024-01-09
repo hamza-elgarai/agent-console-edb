@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 const TOKEN_KEY = 'access_token';
 const REFRESHTOKEN_KEY = 'refresh_token';
-const USER_KEY = 'auth-user';
+const USER_KEY = 'user_email';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,11 @@ export class TokenStorageService {
   //   }
   //   return false;
   // }
-  setToken(token: string,refresh:string): void {
+  setToken(token: string,refresh:string,email:string): void {
     localStorage.setItem(TOKEN_KEY, token);
     localStorage.setItem(REFRESHTOKEN_KEY, refresh);
+    localStorage.setItem(USER_KEY, email);
+
 
   }
 
@@ -34,6 +36,9 @@ export class TokenStorageService {
     window.localStorage.clear();
   }
 
+  getUserEmail  (): string | null {
+    return  window.localStorage.getItem(USER_KEY); 
+    }
   // public saveToken(token: string): void {
   //   window.localStorage.removeItem(TOKEN_KEY);
   //   window.localStorage.setItem(TOKEN_KEY, token);

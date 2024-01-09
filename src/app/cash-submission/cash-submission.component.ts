@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api/api.service';
 import clientData from '../clients';
 import { Router } from '@angular/router';
+import { AgentService } from '../services/agent/agent.service';
+import { TokenStorageService } from '../services/auth/token-storage.service';
 
 @Component({
   selector: 'app-cash-submission',
@@ -47,6 +49,7 @@ export class CashSubmissionComponent {
   benefId: number = 0;
   benefName: string = '';
   transactionType: string = 'CASH';
+  agentId:any
 
   generateOTP!: string;
 
@@ -59,12 +62,25 @@ export class CashSubmissionComponent {
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
-    private router:Router
+    private router:Router,
+    private agentService:AgentService,
+    private tokenService:TokenStorageService,
+    private clientService:ClientService
   ) {}
 
   ngOnInit(){
 
-    
+    this.agentService.getAgentByEmail(this.tokenService.getUserEmail()).subscribe(
+      (response) => {
+        this.agentId = response['id'];
+
+        console.log('im getting agent daaaaata', response);
+
+      },
+      (error) => {
+        console.log('error getting client data', error);
+      }
+    );
   }
 
   toggleDropdown() {
@@ -163,8 +179,6 @@ export class CashSubmissionComponent {
 
     
 
-    
-
 
   //* submit the transaction
   confirmTransaction() {
@@ -172,7 +186,7 @@ export class CashSubmissionComponent {
       donorId: this.ClientData.id,
       beneficiaryId: this.benefId,
       amount: this.montant,
-      agentId:1,
+      agentId:this.agentId,
       whoPayFees: this.whoPayFees,
       paymentType: this.transactionType,
       otpValue: this.typedOTP,

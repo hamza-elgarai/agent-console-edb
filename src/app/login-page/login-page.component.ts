@@ -32,7 +32,7 @@ export class LoginPageComponent {
     this.authService.login(this.username, this.password).subscribe({
       next: data => {
  //       this.tokenService.saveUser(data);
-       this.tokenService.setToken(data['body']['access_token'],data['body']['refresh_token']);
+       this.tokenService.setToken(data['body']['access_token'],data['body']['refresh_token'],this.username);
       // localStorage.setItem('access_token', data['access_token']);
       // localStorage.setItem('refresh_token', data['refresh_token']);
         this.isLoginFailed = false;
